@@ -97,7 +97,7 @@ input:focus,select:focus,textarea:focus{box-shadow:0 8px 20px rgba(0,0,0,0.04);b
 
 /* link interaction */
 a{color:inherit;text-decoration:none}
-a:active,a:focus{color:var(--green-600);text-decoration:underline}
+a:active,a:focus{color:var(--green-600);text-decoration:none}
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
 
 :root {
@@ -140,17 +140,17 @@ body {
 
 a { color: inherit; text-decoration: none; }
 
-/* link interaction: when clicked/focused, change color and underline */
+/* link interaction: when clicked/focused, change color (no underline) */
 a:active, a:focus {
    color: var(--rp-green-2);
-   text-decoration: underline;
+   text-decoration: none;
 }
 
 /* Ensure nav links also get underlined when clicked */
 .nav-links .nav-link:active,
 .nav-links .nav-link:focus {
    color: var(--rp-green-2);
-   text-decoration: underline;
+   text-decoration: none;
 }
 
 .app { min-height: 100vh; display: flex; flex-direction: column; }

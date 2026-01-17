@@ -1,45 +1,58 @@
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import Home from "./Home";
-import About from "./About";
-import Categories from "./Categories";
-import Header from "./Header";
-import Category from "./Category";
-import Session from "./Session";
-import Register from "./Register";
-import Confirmation from "./Confirmation";
+import Navbar from "./layout/Navbar";
+import Footer from "./layout/Footer";
+
+import Home from "./pages/Home";
+import FAQ from "./pages/FAQ";
+import Schools from "./pages/Schools";
+import SchoolDetails from "./pages/SchoolDetails";
+
+import Diplomas from "./diplomas/Diplomas";
+import DiplomaDetails from "./diplomas/DiplomaDetails";
+import ModuleDetails from "./diplomas/ModuleDetails";
+
+import Register from "./register/Register";
+import Confirmation from "./register/Confirmation";
+
 function App() {
   return (
     <div className="app">
+      <Navbar />
 
-      <Header />
+      <main className="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/faq" element={<FAQ />} />
 
-      
-      <Routes>
-        <Route path="/" element={<Home title="Welcome to Red30 Tech"/>} />
-        <Route path="about" element={<About/>} />
-        <Route path="categories" element={<Categories />}>
-           <Route path=":catId" element={<Category/>} >
-           <Route path=":sessionId" element={<Session/>}/>
-           </Route>
-           <Route index element={<h3>Select a category from above</h3>}/>
-        </Route> 
-        <Route path="register" element={<Register/>} />
-        <Route path="confirmed" element={<Confirmation/>} />
+          <Route path="/diplomas" element={<Diplomas />} />
+          <Route path="/diplomas/:diplomaId" element={<DiplomaDetails />} />
+          <Route
+            path="/diplomas/:diplomaId/:moduleId"
+            element={<ModuleDetails />}
+          />
 
-        <Route path="*" element={<h1 className="not-found">Page not found</h1>} />
+          <Route path="/schools" element={<Schools />} />
+          <Route path="/schools/:schoolId" element={<SchoolDetails />} />
+          <Route
+            path="/schools/:schoolId/diplomas"
+            element={<Diplomas />}
+          />
+          <Route
+            path="/schools/:schoolId/diplomas/:diplomaId"
+            element={<DiplomaDetails />}
+          />
+          <Route
+            path="/schools/:schoolId/diplomas/:diplomaId/:moduleId"
+            element={<ModuleDetails />}
+          />
 
+          <Route path="/register" element={<Register />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+        </Routes>
+      </main>
 
-
-      </Routes>
-
-
-
-
-
-      <footer className="container">
-        &copy;2022 | <a href="https://red30tech.com/">Red30 Tech</a>
-      </footer>
+      <Footer />
     </div>
   );
 }
